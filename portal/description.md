@@ -73,7 +73,11 @@ One command, `/upg`, and `/upg help` lists the subcommands. Players can see the 
 
 ## Compatibility
 
-Factorio 2.1 and 2.0 (separate downloads). Works without Space Age; with it, planets and platforms are handled too. Works with modded planets and enemies. If Factory Radar is installed, its shift summary ends together with the maintenance pass. English and Russian.
+Factorio 2.1 and 2.0 (separate downloads). Works without Space Age; with it, planets and platforms are handled too. English and Russian.
+
+Works with other mods. No mod, planet or server name is built in, so planets and enemy factions from other mods are treated like the vanilla ones: the mod sees every planet, and you can list extra surfaces to count as planets, or surfaces that must never be trimmed or deleted. Enemy bases of any faction can be paused and thinned. It changes no prototypes and adds no items, so it does not conflict with other mods' content. Values it changes in the game (pathfinding, pollution, asteroids, robots, expansion) are saved first and put back when you switch the setting off.
+
+If Factory Radar is installed, its shift summary ends together with the maintenance pass.
 
 ## Support
 

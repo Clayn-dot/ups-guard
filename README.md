@@ -46,6 +46,8 @@ Deleting a planet also resets its enemy evolution (evolution is kept per planet)
 
 ## Other mods
 
+No mod, planet or server name is built in, so planets and enemies from other mods are treated like the vanilla ones (surface lists in the settings). The mod adds no prototypes and no items.
+
 Factory Radar, if installed, reads the pass schedule through the `ups-guard` remote interface (`schedule`) and ends its shift summary together with the pass.
 
 ## Layout
