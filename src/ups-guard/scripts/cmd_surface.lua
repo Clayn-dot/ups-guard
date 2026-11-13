@@ -18,10 +18,19 @@ end
 
 function ACTIONS.unused(ctx)
   surfaces.track_activity()
-  say.reply(ctx, {"upg.surface-unused-head", cfg.get("delete-unused-hours"), tostring(cfg.get("delete-unused"))})
-  local list = surfaces.unused()
-  for _, s in ipairs(list) do
-    say.reply(ctx, {"upg.surface-unused-line", s.name, math.floor((game.tick - storage.surface_active[s.name]) / 216000)})
+  say.reply(ctx, {"upg.surface-unused-head", cfg.get("delete-fresh-hours"), tostring(cfg.get("delete-fresh")),
+                  cfg.get("delete-unused-hours"), tostring(cfg.get("delete-unused"))})
+  local list = surfaces.candidates()
+  for _, c in ipairs(list) do
+    local tier = {"upg.tier-" .. c.tier}
+    local idle = math.floor(c.idle)
+    if not c.limit then
+      say.reply(ctx, {"upg.surface-unused-off", c.surface.name, tier, idle})
+    elseif c.idle >= c.limit then
+      say.reply(ctx, {"upg.surface-unused-due", c.surface.name, tier, idle, c.limit})
+    else
+      say.reply(ctx, {"upg.surface-unused-wait", c.surface.name, tier, idle, c.limit, math.ceil(c.limit - c.idle)})
+    end
   end
   if #list == 0 then say.reply(ctx, {"upg.surface-unused-none"}) end
 end

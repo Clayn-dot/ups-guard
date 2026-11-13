@@ -24,6 +24,7 @@ function Cy.init()
   storage.minutes = storage.minutes or 0
   storage.items_removed = storage.items_removed or 0
   storage.watch = storage.watch or {}
+  surfaces.init_landed()
 end
 
 function Cy.period()
@@ -38,15 +39,15 @@ end
 ---------------------------------------------------------------- planning
 local function plan()
   local jobs = {}
-  if cfg.get("delete-unused") then jobs[#jobs + 1] = {kind = "unused"} end
+  if cfg.get("delete-fresh") or cfg.get("delete-unused") then jobs[#jobs + 1] = {kind = "unused"} end
   if cfg.get("items-enabled") then
     for _, s in ipairs(cfg.auto_surfaces("items-surfaces", false)) do jobs[#jobs + 1] = {kind = "items", surface = s.index} end
   end
   if cfg.get("junk-enabled") then
     for _, s in ipairs(cfg.auto_surfaces("junk-surfaces", false)) do jobs[#jobs + 1] = {kind = "junk", surface = s.index} end
   end
-  if cfg.get("pollution-clear") then
-    for _, s in ipairs(cfg.auto_surfaces("pollution-surfaces", false)) do jobs[#jobs + 1] = {kind = "pollution", surface = s.index} end
+  if cfg.get("pollution-clear") or cfg.get("pollution-clear-quiet") then
+    for _, s in ipairs(cfg.auto_surfaces("pollution-surfaces", true)) do jobs[#jobs + 1] = {kind = "pollution", surface = s.index} end
   end
   if cfg.get("asteroids-cap") > 0 then
     for _, s in ipairs(platforms.platform_surfaces()) do jobs[#jobs + 1] = {kind = "asteroids", surface = s.index} end
@@ -156,7 +157,7 @@ local function run_junk(_, s)
 end
 
 local function run_pollution(_, s)
-  local n = pollution.clear(s, true)
+  local n = pollution.clear(s, true, false, true)
   if storage.cycle then note(storage.cycle.pollution, s.name, n) end
   return true
 end

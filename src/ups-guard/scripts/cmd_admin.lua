@@ -38,10 +38,17 @@ local function settings_commands(reg)
   end)
 
   reg("preset", true, function(ctx)
+    local apply = take_confirm(ctx.args)
     local name = ctx.args[1] and string.lower(ctx.args[1])
     if not name or not presets.exists(name) then
       say.reply(ctx, {"upg.preset-list"})
       for _, p in ipairs(presets.order) do say.reply(ctx, {"upg.preset-" .. p}) end
+      return
+    end
+    if not apply then
+      local list = presets.changes(name)
+      say.reply(ctx, {"upg.preset-dry", name, #list})
+      for _, c in ipairs(list) do say.reply(ctx, {"upg.preset-line", c[1], shown(c[2]), shown(c[3])}) end
       return
     end
     local n = 0

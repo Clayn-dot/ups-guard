@@ -5,7 +5,7 @@ local M = {}
 
 M.global = {
   -- general
-  {"level", "choice", "minimal", {"minimal", "medium", "high", "custom"}},
+  {"level", "choice", "minimal", {"minimal", "medium", "high", "extreme", "custom"}},
   {"cycle-hours", "int", 4, 1, 48},
   {"announce", "bool", true},
   {"calm-players", "int", 0, 0, 200},
@@ -22,12 +22,14 @@ M.global = {
   {"junk-types", "string", "fire,corpse"},
   {"junk-surfaces", "string", ""},
   -- map trimming
-  {"trim-enabled", "bool", false},
-  {"trim-buffer", "int", 16, 8, 64},
+  {"trim-enabled", "bool", true},
+  {"trim-buffer", "int", 24, 8, 64},
   {"trim-min-chunks", "int", 300, 1, 1000000},
   {"trim-surfaces", "string", ""},
   -- surface deletion
   {"delete-once", "string", ""},
+  {"delete-fresh", "bool", true},
+  {"delete-fresh-hours", "int", 12, 1, 720},
   {"delete-unused", "bool", false},
   {"delete-unused-hours", "int", 24, 1, 720},
   -- far enemy bases
@@ -66,7 +68,8 @@ M.global = {
   {"asteroids-percent", "int", 100, 0, 200},
   {"build-queue-tune", "bool", false},
   {"build-queue-percent", "int", 100, 20, 100},
-  -- pollution on empty planets, asteroids around platforms
+  -- pollution on planets without nests or without visitors, asteroids around platforms
+  {"pollution-clear-quiet", "bool", false},
   {"pollution-clear", "bool", false},
   {"pollution-clear-hours", "int", 6, 1, 720},
   {"pollution-surfaces", "string", ""},
