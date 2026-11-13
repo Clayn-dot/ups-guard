@@ -25,7 +25,15 @@ What does not touch play is on early. What makes the game easier starts a little
 - **High**: all of that, stronger, plus automatic thinning when a planet has too many nests, deleting planets that were used and left empty for 24 h, slower pollution spreading, an asteroid limit around platforms.
 - **Extreme**: strongest values, planets left empty are deleted after 12 h, pollution is cleared even where enemies live, asteroids spawn at 75%, robots build at 75% speed. The game stays playable.
 
-`/upg preset <name>` shows what a level would change before you apply it. Choosing a level writes its settings once, and values the mod changes in the game are saved and put back when you switch them off.
+## Change it while you play
+
+Everything works in a running game, no restart is needed. Pick a level in the mod settings (Map tab) and its settings are written at once, with a message in chat. After that you can change any single setting and it takes effect right away. The level name stays as it was, and `/upg status` tells how many settings differ from it.
+
+To go back to a level, for example if your changes turned out too strong, type `/upg preset medium confirm` (use the level you want). Without `confirm` the command only shows what would change. Values the mod changes in the game (pathfinding, pollution, asteroids, robots, expansion) are saved first and put back when you switch the setting off.
+
+## What you see in chat
+
+Players get a short notice 30 minutes and 1 minute before a pass that has work to do, a warning before a planet that was used is deleted, and one card when the pass is done. Admins can switch messages off for everyone with the setting "Show mod messages in chat", and every player can hide them with `/upg messages off`.
 
 # How much will you notice
 
