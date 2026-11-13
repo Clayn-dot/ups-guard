@@ -44,7 +44,7 @@ Check it on your own save: `/upg status` shows what was removed, `/upg profile o
 
 The end of each pass is one card in chat. `/upg status` has the totals, and `/upg profile on` adds the time per job.
 
-![The pass card](https://raw.githubusercontent.com/Clayn-dot/ups-guard/main/portal/images/IMG-02-pass-card.png)
+![The pass card](https://raw.githubusercontent.com/Clayn-dot/ups-guard/main/portal/images/IMG-02-pass-card-1024.png)
 
 *The card after a pass: what was removed on which planet and how many nests and enemies are left.*
 
