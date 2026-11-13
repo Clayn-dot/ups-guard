@@ -96,7 +96,7 @@ local function finish(surface, st)
   if st.thin then
     storage.thinned = storage.thinned or {}
     storage.thinned[surface.name] = true
-    say.all({"upq.thin-done", surface.name, st.removed, cfg.get("thin-radius"), paused}, "ok")
+    say.all({"upg.thin-done", surface.name, st.removed, cfg.get("thin-radius"), paused}, "ok")
   end
 end
 

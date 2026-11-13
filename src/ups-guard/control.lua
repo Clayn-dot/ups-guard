@@ -24,7 +24,7 @@ script.on_init(function()
   cycle.init()
   -- first pass 5 game minutes after the mod is added, then every N hours
   storage.minutes = cycle.period() - 5
-  say.all({"upq.installed", cfg.get("cycle-hours")}, "ok")
+  say.all({"upg.installed", cfg.get("cycle-hours")}, "ok")
   startup_jobs()
 end)
 
@@ -33,7 +33,7 @@ script.on_configuration_changed(function(data)
   local ch = data and data.mod_changes and data.mod_changes["ups-guard"]
   if ch and ch.old_version and ch.new_version and ch.old_version ~= ch.new_version then
     cycle.schedule_soon()
-    say.all({"upq.updated", ch.new_version}, "ok")
+    say.all({"upg.updated", ch.new_version}, "ok")
   end
   startup_jobs()
 end)

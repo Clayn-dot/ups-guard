@@ -1,5 +1,5 @@
--- One list of all mod settings. settings.lua builds the prototypes from it and the /upq commands validate values with it.
--- Row: {key, kind, default, min, max}. The real setting name is "upq-" .. key.
+-- One list of all mod settings. settings.lua builds the prototypes from it and the /upg commands validate values with it.
+-- Row: {key, kind, default, min, max}. The real setting name is "upg-" .. key.
 -- Kind "choice": row[4] is the list of allowed values. Defaults are the "minimal" level (see presets.lua).
 local M = {}
 
@@ -10,8 +10,8 @@ M.global = {
   {"announce", "bool", true},
   {"calm-players", "int", 0, 0, 200},
   {"extra-surfaces", "string", ""},
-  {"protected-surfaces", "string", "castra,cerys"},
-  {"enemy-keep-surfaces", "string", "castra"},
+  {"protected-surfaces", "string", "cerys"},
+  {"enemy-keep-surfaces", "string", ""},
   -- ground items
   {"items-enabled", "bool", true},
   {"items-radius", "int", 48, 0, 1000},
@@ -31,14 +31,14 @@ M.global = {
   {"delete-unused", "bool", false},
   {"delete-unused-hours", "int", 24, 1, 720},
   -- far enemy bases
-  {"freeze-enabled", "bool", true},
-  {"freeze-surfaces", "string", "castra"},
+  {"freeze-enabled", "bool", false},
+  {"freeze-surfaces", "string", ""},
   {"freeze-radius", "int", 1000, 300, 5000},
   {"freeze-wake-radius", "int", 320, 64, 1000},
-  {"thin-once", "bool", true},
-  {"thin-surfaces", "string", "castra"},
+  {"thin-once", "bool", false},
+  {"thin-surfaces", "string", ""},
   {"thin-radius", "int", 1500, 600, 10000},
-  {"sweep-prefixes", "string", "data-collector-"},
+  {"sweep-prefixes", "string", ""},
   -- watch: enemy counts and trains
   {"watch-enabled", "bool", true},
   {"watch-spawners", "int", 1000, 1, 1000000},
@@ -85,10 +85,10 @@ for _, row in ipairs(M.global) do
   end
 end
 
--- Accepts "items-radius" and "upq-items-radius". Returns a table or nil.
+-- Accepts "items-radius" and "upg-items-radius". Returns a table or nil.
 function M.find(name)
   name = string.lower(name or "")
-  if string.sub(name, 1, 4) == "upq-" then name = string.sub(name, 5) end
+  if string.sub(name, 1, 4) == "upg-" then name = string.sub(name, 5) end
   return by_key[name]
 end
 

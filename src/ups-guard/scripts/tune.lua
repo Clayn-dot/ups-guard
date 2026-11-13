@@ -71,7 +71,7 @@ function T.apply()
   apply_queues()
 end
 
--- Names of the values the mod holds right now, for /upq status
+-- Names of the values the mod holds right now, for /upg status
 function T.active()
   local out = {}
   for id in pairs(storage.tune_backup or {}) do out[#out + 1] = id end

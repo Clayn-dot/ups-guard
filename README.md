@@ -10,9 +10,8 @@ The setting "Effect level" writes a ready set of settings. You can still change 
 | --- | --- | --- | --- |
 | Ground items | yes | yes | yes |
 | Enemy count and warnings | yes | yes | yes |
-| Castra fixes (pause and thin, stuck collectors) | yes | yes | yes |
 | Fire and remnants removed | | yes | yes |
-| Far enemy bases paused | Castra only | every planet | every planet |
+| Far enemy bases paused | | every planet | every planet |
 | Slower enemy expansion | | yes | stronger |
 | Pollution cleared on empty planets | | yes | after 2 h |
 | Asteroids around platforms | | spawn 75%, limit 600 | spawn 50%, limit 250 |
@@ -42,7 +41,7 @@ The end of each pass is one chat card with only the lines that have something to
 
 ## Commands
 
-`/upq help` lists them. Players: `status`, `surfaces`, `trains`, `config`, `messages on|off`. Admins: `set`, `reset`, `preset`, `cycle`, `abort`, `report`, `clean`, `junk`, `pollution`, `platforms`, `sweep`, `trim`, `freeze`, `thin`, `enemies artillery|near|reset`, `surface delete|unused`, `profile`. Commands that remove things only count until you add `confirm`.
+`/upg help` lists them. Players: `status`, `surfaces`, `trains`, `config`, `messages on|off`. Admins: `set`, `reset`, `preset`, `cycle`, `abort`, `report`, `clean`, `junk`, `pollution`, `platforms`, `sweep`, `trim`, `freeze`, `thin`, `enemies artillery|near|reset`, `surface delete|unused`, `profile`. Commands that remove things only count until you add `confirm`.
 
 ## Server settings that help too
 

@@ -1,26 +1,19 @@
 -- Levels and ready sets of settings. The "level" setting (minimal, medium, high) writes a whole set of settings;
 -- after that every setting can still be changed by hand ("custom" stops the level from writing anything).
--- /upq preset <name> does the same from chat. "default" puts every setting back to its default.
--- The Castra fixes (pause and thin, sweep of stuck collectors, enemy bases kept) are in every level.
+-- /upg preset <name> does the same from chat. "default" puts every setting back to its default.
 local spec = require("scripts.spec")
 local cfg = require("scripts.cfg")
 
 local P = {}
 
-P.order = {"default", "minimal", "medium", "high", "castra"}
+P.order = {"default", "minimal", "medium", "high"}
 
 -- Settings that hold a list of names: a level adds its names to the list and keeps the ones you added.
-local LISTS = {
-  ["protected-surfaces"] = true, ["enemy-keep-surfaces"] = true, ["thin-surfaces"] = true, ["sweep-prefixes"] = true,
-}
+local LISTS = {["protected-surfaces"] = true, ["enemy-keep-surfaces"] = true}
 
-local CASTRA = {
-  ["freeze-enabled"] = true, ["freeze-surfaces"] = "castra", ["thin-once"] = true, ["thin-surfaces"] = "castra",
-  ["sweep-prefixes"] = "data-collector-", ["enemy-keep-surfaces"] = "castra", ["protected-surfaces"] = "castra,cerys",
-}
-
--- Minimal: the Castra fixes, ground items and the enemy count. Everything else is off. Equals the defaults in spec.lua.
+-- Minimal: ground items and the enemy count. Everything else is off. Equals the defaults in spec.lua.
 local MINIMAL = {
+  ["protected-surfaces"] = "cerys", ["freeze-enabled"] = false, ["thin-once"] = false, ["sweep-prefixes"] = "",
   ["items-enabled"] = true, ["watch-enabled"] = true, ["calm-players"] = 0,
   ["junk-enabled"] = false, ["trim-enabled"] = false, ["delete-unused"] = false, ["delete-unused-hours"] = 24,
   ["watch-thin"] = false, ["trains-watch"] = false,
@@ -30,13 +23,12 @@ local MINIMAL = {
   ["pollution-tune"] = false, ["pollution-diffuse-percent"] = 100, ["pollution-clear"] = false, ["pollution-clear-hours"] = 6,
   ["asteroids-tune"] = false, ["asteroids-percent"] = 100, ["asteroids-cap"] = 0,
   ["build-queue-tune"] = false, ["build-queue-percent"] = 100,
-  ["freeze-surfaces"] = "castra",
 }
 
 -- Medium: noticeable savings that players hardly feel. Far enemy bases are paused on every planet, expansion is slower,
 -- fire and remnants go, pollution is cleared on empty planets, asteroids and enemy pathfinding are lowered a little.
 local MEDIUM = {
-  ["freeze-surfaces"] = "",
+  ["freeze-enabled"] = true, ["freeze-surfaces"] = "",
   ["junk-enabled"] = true, ["pollution-clear"] = true, ["trains-watch"] = true, ["calm-players"] = 12,
   ["expansion-manage"] = true,
   ["ai-tune"] = true, ["ai-path-percent"] = 80, ["ai-groups-percent"] = 80,
@@ -64,10 +56,9 @@ local function merged(...)
 end
 
 local SETS = {
-  minimal = merged(MINIMAL, CASTRA),
-  medium = merged(MINIMAL, CASTRA, MEDIUM),
-  high = merged(MINIMAL, CASTRA, MEDIUM, HIGH),
-  castra = CASTRA,
+  minimal = merged(MINIMAL),
+  medium = merged(MINIMAL, MEDIUM),
+  high = merged(MINIMAL, MEDIUM, HIGH),
 }
 P.sets = SETS
 
@@ -95,7 +86,7 @@ function P.apply(name)
     return n
   end
   for key, value in pairs(SETS[name]) do cfg.put(key, wanted(key, value)); n = n + 1 end
-  if name ~= "castra" then cfg.put("level", name) end
+  cfg.put("level", name)
   return n
 end
 

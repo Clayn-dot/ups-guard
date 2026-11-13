@@ -29,7 +29,7 @@ function P.on_surface_created(event)
     return t
   end)
   if ok then
-    say.all({"upq.new-planet", s.name, f, z, sa, touched and "" or "?"}, "ok")
+    say.all({"upg.new-planet", s.name, f, z, sa, touched and "" or "?"}, "ok")
   else
     log("ups-guard: could not adjust map generation on " .. s.name)
   end

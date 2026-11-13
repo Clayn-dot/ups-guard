@@ -4,4 +4,4 @@ Date: 2026-11-13
   Changes:
     - First version for Factorio 2.1: rewrite of UPS Guard as a standalone mod.
     - Every part is a setting, no server or planet names are built in. Destructive parts are off by default.
-    - New: /upq command with player and admin subcommands, presets, surface deletion, unused planet cleanup.
+    - New: /upg command with player and admin subcommands, presets, surface deletion, unused planet cleanup.

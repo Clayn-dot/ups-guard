@@ -1,5 +1,5 @@
 -- Removes enemy units whose prototype name starts with a listed prefix (setting "sweep-prefixes").
--- Some mods spawn short-lived "units" that should turn into items at once (Castra data collectors do this);
+-- Some mods spawn short-lived "units" that should turn into items at once (data collectors of some mods do this);
 -- when some slip through they pile up by the thousand and eat UPS. Never used on real enemies unless named.
 local cfg = require("scripts.cfg")
 local U = require("scripts.util")

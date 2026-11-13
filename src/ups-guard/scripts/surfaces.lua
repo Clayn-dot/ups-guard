@@ -28,7 +28,7 @@ function S.delete(surface)
   local name = surface.name
   game.delete_surface(surface)
   storage.surfaces_deleted = (storage.surfaces_deleted or 0) + 1
-  say.all({"upq.surface-deleted", name}, "ok")
+  say.all({"upg.surface-deleted", name}, "ok")
 end
 
 ---------------------------------------------------------------- one-time list

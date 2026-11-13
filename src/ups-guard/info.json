@@ -7,5 +7,5 @@
   "dependencies": [
     "base >= 2.1.0"
   ],
-  "description": "Keeps a heavy multiplayer save fast with three effect levels: ground item and junk cleanup, map trimming, unused planet deletion, far enemy pause, pollution and asteroid limits, expansion and pathfinding tuning. Every part is optional. Admin and player commands: /upq help."
+  "description": "Keeps a heavy multiplayer save fast with three effect levels: ground item and junk cleanup, map trimming, unused planet deletion, far enemy pause, pollution and asteroid limits, expansion and pathfinding tuning. Every part is optional. Admin and player commands: /upg help."
 }

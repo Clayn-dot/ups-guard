@@ -1,5 +1,5 @@
 -- Chat messages. Broadcasts respect the "announce" setting and each player's own switch.
--- Every broadcast starts with a coloured "UPS Guard" tag (locale upq.tag-*). A card is one message with a title and
+-- Every broadcast starts with a coloured "UPS Guard" tag (locale upg.tag-*). A card is one message with a title and
 -- several lines, so a maintenance pass appears as one block and not as a stream of lines.
 local cfg = require("scripts.cfg")
 
@@ -12,7 +12,7 @@ local COLORS = {
 }
 
 local function tagged(msg, kind)
-  return {"", {"upq.tag-" .. (kind or "info")}, " ", msg}
+  return {"", {"upg.tag-" .. (kind or "info")}, " ", msg}
 end
 
 local function send(msg, kind)
@@ -20,7 +20,7 @@ local function send(msg, kind)
   if not cfg.get("announce") then return end
   local color = COLORS[kind or "info"]
   for _, p in pairs(game.connected_players) do
-    if p.mod_settings["upq-player-messages"].value then p.print(msg, {color = color}) end
+    if p.mod_settings["upg-player-messages"].value then p.print(msg, {color = color}) end
   end
 end
 

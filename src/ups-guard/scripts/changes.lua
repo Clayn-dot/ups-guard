@@ -1,4 +1,4 @@
--- What to redo when a setting changes (from the settings window or from /upq set).
+-- What to redo when a setting changes (from the settings window or from /upg set).
 local expansion = require("scripts.expansion")
 local surfaces = require("scripts.surfaces")
 local freeze = require("scripts.freeze")
@@ -21,8 +21,8 @@ function Ch.quiet(fn)
   if not ok then error(err, 0) end
 end
 
-local TUNE_PREFIXES = {"upq-ai-", "upq-pollution-tune", "upq-pollution-diffuse", "upq-asteroids-tune", "upq-asteroids-percent",
-                       "upq-build-queue-"}
+local TUNE_PREFIXES = {"upg-ai-", "upg-pollution-tune", "upg-pollution-diffuse", "upg-asteroids-tune", "upg-asteroids-percent",
+                       "upg-build-queue-"}
 
 local function starts(name, prefix)
   return string.sub(name, 1, #prefix) == prefix
@@ -39,19 +39,19 @@ end
 
 function Ch.on_setting(name)
   if busy then return end
-  if name == "upq-level" then
+  if name == "upg-level" then
     local level = cfg.get("level")
     if level ~= "custom" then
       local n = 0
       Ch.quiet(function() n = presets.apply(level) end)
       Ch.all()
-      say.all({"upq.level-applied", level, n}, "ok")
+      say.all({"upg.level-applied", level, n}, "ok")
     end
     return
   end
-  if starts(name, "upq-expansion-") then expansion.apply() end
-  if name == "upq-delete-once" then surfaces.delete_once() end
-  if starts(name, "upq-freeze-") then freeze.recheck(false, true) end
+  if starts(name, "upg-expansion-") then expansion.apply() end
+  if name == "upg-delete-once" then surfaces.delete_once() end
+  if starts(name, "upg-freeze-") then freeze.recheck(false, true) end
   for _, prefix in ipairs(TUNE_PREFIXES) do
     if starts(name, prefix) then tune.apply(); break end
   end

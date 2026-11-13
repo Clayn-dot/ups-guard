@@ -27,18 +27,18 @@ end
 -- c is storage.cycle; time_line is an optional extra line (profiler)
 function K.lines(c, time_line)
   local out = {}
-  add_map(out, "upq.card-items", c.items)
-  add_map(out, "upq.card-junk", c.junk)
-  add_map(out, "upq.card-trim", c.trimmed)
-  add_map(out, "upq.card-pollution", c.pollution)
-  add_map(out, "upq.card-asteroids", c.asteroids)
-  if (c.deleted or 0) > 0 then out[#out + 1] = {"upq.card-deleted", c.deleted} end
+  add_map(out, "upg.card-items", c.items)
+  add_map(out, "upg.card-junk", c.junk)
+  add_map(out, "upg.card-trim", c.trimmed)
+  add_map(out, "upg.card-pollution", c.pollution)
+  add_map(out, "upg.card-asteroids", c.asteroids)
+  if (c.deleted or 0) > 0 then out[#out + 1] = {"upg.card-deleted", c.deleted} end
   local enemies = enemy_text(c.checked)
-  if enemies ~= "" then out[#out + 1] = {"upq.card-enemies", enemies} end
-  if c.trains and c.trains.total > 0 then out[#out + 1] = {"upq.card-trains", c.trains.total} end
-  if #out == 0 then out[1] = {"upq.card-quiet"} end
+  if enemies ~= "" then out[#out + 1] = {"upg.card-enemies", enemies} end
+  if c.trains and c.trains.total > 0 then out[#out + 1] = {"upg.card-trains", c.trains.total} end
+  if #out == 0 then out[1] = {"upg.card-quiet"} end
   if time_line then out[#out + 1] = time_line end
-  out[#out + 1] = {"upq.card-next", cfg.get("cycle-hours"), cfg.get("level")}
+  out[#out + 1] = {"upg.card-next", cfg.get("cycle-hours"), cfg.get("level")}
   return out
 end
 

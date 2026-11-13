@@ -6,7 +6,7 @@ UPS Guard keeps a heavy multiplayer save fast. Pick an effect level in the mod s
 
 ## Levels
 
-- Minimal (default): ground items, enemy count, and the Castra fixes. Almost nothing changes in the game.
+- Minimal (default): ground items and the enemy count. Almost nothing changes in the game.
 - Medium: also pauses far enemy bases on every planet, slows enemy expansion, removes fire and remnants, clears pollution on planets nobody visits, lowers asteroids and enemy pathfinding a little.
 - High: all of that, stronger, plus map trimming, automatic thinning, deleting planets nobody uses, slower pollution spreading and robot building.
 
@@ -23,12 +23,12 @@ Choosing a level writes its settings once. You can change any of them afterwards
 - Pollution: clears it on planets nobody visits, and can make it spread less.
 - Game numbers: lowers enemy pathfinding, attack groups, asteroid spawning and robot building work, with the old values restored on switch-off.
 - Expansion and new planets: sets expansion pauses and tunes nests and the safe area on planets generated for the first time.
-- Chat: each pass ends with one clear card. Players can hide the messages with /upq messages off.
+- Chat: each pass ends with one clear card. Players can hide the messages with /upg messages off.
 - Admin tools: bulk enemy removal in artillery reach or near your base, an entity report, presets.
 
 ## Commands
 
-One command, `/upq`. `/upq help` lists the subcommands. Players can see the status, surfaces, stuck trains and settings. Admins can change any setting with `/upq set`, run the pass by hand and use the cleanup tools. Anything that removes things only counts until you add `confirm`.
+One command, `/upg`. `/upg help` lists the subcommands. Players can see the status, surfaces, stuck trains and settings. Admins can change any setting with `/upg set`, run the pass by hand and use the cleanup tools. Anything that removes things only counts until you add `confirm`.
 
 ## Compatibility
 

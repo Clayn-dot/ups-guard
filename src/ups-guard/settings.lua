@@ -8,7 +8,7 @@ local function build(rows, setting_type, first)
   for i, row in ipairs(rows) do
     local p = {
       type = PROTO[row[2]],
-      name = "upq-" .. row[1],
+      name = "upg-" .. row[1],
       setting_type = setting_type,
       default_value = row[3],
       order = string.format("%03d", first + i),

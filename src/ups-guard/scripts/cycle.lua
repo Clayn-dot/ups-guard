@@ -16,7 +16,7 @@ local passcard = require("scripts.passcard")
 
 local Cy = {}
 
--- Time spent per kind of job, only measured while /upq profile is on. Not saved: profilers cannot be serialized.
+-- Time spent per kind of job, only measured while /upg profile is on. Not saved: profilers cannot be serialized.
 local spent = {}
 
 function Cy.init()
@@ -91,13 +91,13 @@ local function check_watch(c)
   for _, name in ipairs(names) do
     if watch.over_limit(name) then
       local w = storage.watch[name]
-      say.all({"upq.watch-alert", name, w.spawners, w.units, lim_s, lim_u}, "warn")
+      say.all({"upg.watch-alert", name, w.spawners, w.units, lim_s, lim_u}, "warn")
       local s = game.get_surface(name)
       if s and cfg.get("watch-thin") then freeze.start(s, true) end
     end
   end
   if c.trains and trains.over_limit(c.trains) then
-    say.all({"upq.trains-alert", c.trains.total, cfg.get("trains-limit")}, "warn")
+    say.all({"upg.trains-alert", c.trains.total, cfg.get("trains-limit")}, "warn")
   end
 end
 
@@ -107,7 +107,7 @@ local function time_line()
   for name in pairs(spent) do names[#names + 1] = name end
   if #names == 0 then return nil end
   table.sort(names)
-  local parts = {"", {"upq.card-time"}}
+  local parts = {"", {"upg.card-time"}}
   for _, name in ipairs(names) do
     parts[#parts + 1] = " " .. name .. " "
     parts[#parts + 1] = spent[name]
@@ -118,11 +118,11 @@ end
 local function finish()
   local c = storage.cycle
   storage.cycle, storage.progress = nil, nil
-  say.card({"upq.card-title", c.number}, passcard.lines(c, time_line()), "ok")
+  say.card({"upg.card-title", c.number}, passcard.lines(c, time_line()), "ok")
   check_watch(c)
   if c.announce then
     local p = game.get_player(c.announce)
-    if p and p.valid then p.print({"upq.cycle-done"}) end
+    if p and p.valid then p.print({"upg.cycle-done"}) end
   end
 end
 
@@ -185,7 +185,7 @@ local function run(job)
     if storage.cycle then storage.cycle.trains = trains.stuck() end
     return true
   elseif job.kind == "report" then
-    if report.step(job.state) then say.all({"upq.report-done"}, "ok"); return true end
+    if report.step(job.state) then say.all({"upg.report-done"}, "ok"); return true end
     return false
   end
   local s = game.get_surface(job.surface)
@@ -229,7 +229,7 @@ function Cy.minute()
   if left == Cy.period() then
     Cy.start()
   elseif (left == 30 or left == 1) and #plan() > 0 then
-    say.all({"upq.cycle-soon", left})
+    say.all({"upg.cycle-soon", left})
   end
 end
 

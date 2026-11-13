@@ -1,4 +1,4 @@
--- /upq enemies <artillery|near|reset>: bulk enemy removal. Without the word "confirm" it only counts.
+-- /upg enemies <artillery|near|reset>: bulk enemy removal. Without the word "confirm" it only counts.
 -- Without surface names it works on every planet except the ones in "enemy-keep-surfaces".
 local cfg = require("scripts.cfg")
 local U = require("scripts.util")
@@ -25,28 +25,28 @@ function ACTIONS.artillery(ctx, apply)
   local _, list = parse(ctx)
   local r = enemies.artillery(ctx.force, list, apply)
   local _, text = U.summary(r.per)
-  say.reply(ctx, {apply and "upq.artillery-done" or "upq.artillery-dry", r.guns, math.floor(r.max_r), r.count, text, r.charted})
+  say.reply(ctx, {apply and "upg.artillery-done" or "upg.artillery-dry", r.guns, math.floor(r.max_r), r.count, text, r.charted})
 end
 
 function ACTIONS.near(ctx, apply)
   local tiles, list = parse(ctx, 800, 64, 5000)
   local total, per = enemies.near(ctx.force, tiles, list, apply)
   local _, text = U.summary(per)
-  say.reply(ctx, {apply and "upq.near-done" or "upq.near-dry", tiles, total, text})
+  say.reply(ctx, {apply and "upg.near-done" or "upg.near-dry", tiles, total, text})
 end
 
 function ACTIONS.reset(ctx, apply)
   local keep, list = parse(ctx, 6, 0, 50)
   local removed, placed, report = enemies.reset(ctx.force, keep, list, apply)
-  say.reply(ctx, {apply and "upq.reset-done" or "upq.reset-dry", removed, placed, report})
+  say.reply(ctx, {apply and "upg.reset-done" or "upg.reset-dry", removed, placed, report})
 end
 
 return function(reg)
   reg("enemies", true, function(ctx)
     local apply = U.take_confirm(ctx.args)
     local action = ACTIONS[string.lower(ctx.args[1] or "")]
-    if not action then say.reply(ctx, {"upq.enemies-usage"}); return end
+    if not action then say.reply(ctx, {"upg.enemies-usage"}); return end
     action(ctx, apply)
-    if not apply then say.reply(ctx, {"upq.confirm-hint"}) end
+    if not apply then say.reply(ctx, {"upg.confirm-hint"}) end
   end)
 end

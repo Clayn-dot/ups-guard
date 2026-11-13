@@ -5,7 +5,7 @@ local U = require("scripts.util")
 local C = {}
 
 function C.get(key)
-  return settings.global["upq-" .. key].value
+  return settings.global["upg-" .. key].value
 end
 
 function C.set_of(key)
@@ -85,7 +85,7 @@ end
 
 -- Writes a value that is already valid (presets, defaults)
 function C.put(key, value)
-  settings.global["upq-" .. key] = {value = value}
+  settings.global["upg-" .. key] = {value = value}
 end
 
 -- Returns true, value, setting name on success, or nil, "unknown" | "bad" | "range"
@@ -100,14 +100,14 @@ function C.set(key, raw)
     if value == nil then return nil, err end
   end
   C.put(row.key, value)
-  return true, value, "upq-" .. row.key
+  return true, value, "upg-" .. row.key
 end
 
 function C.reset(key)
   local row = spec.find(key)
   if not row then return nil, "unknown" end
   C.put(row.key, row.default)
-  return true, row.default, "upq-" .. row.key
+  return true, row.default, "upg-" .. row.key
 end
 
 return C
