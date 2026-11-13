@@ -1,4 +1,4 @@
--- UPS Guard (ups-quard): keeps a heavy multiplayer save fast. This file only wires events to the modules in scripts/.
+-- UPS Guard (ups-guard): keeps a heavy multiplayer save fast. This file only wires events to the modules in scripts/.
 -- All state that must survive saves and stay equal in multiplayer lives in `storage`.
 local cfg = require("scripts.cfg")
 local say = require("scripts.say")
@@ -6,6 +6,7 @@ local cycle = require("scripts.cycle")
 local freeze = require("scripts.freeze")
 local sweep = require("scripts.sweep")
 local expansion = require("scripts.expansion")
+local tune = require("scripts.tune")
 local planets = require("scripts.planets")
 local surfaces = require("scripts.surfaces")
 local changes = require("scripts.changes")
@@ -13,6 +14,7 @@ local commands_module = require("scripts.commands")
 
 local function startup_jobs()
   expansion.apply()
+  tune.apply()
   surfaces.delete_once()
   freeze.thin_once()
   freeze.recheck(false)
@@ -28,7 +30,7 @@ end)
 
 script.on_configuration_changed(function(data)
   cycle.init()
-  local ch = data and data.mod_changes and data.mod_changes["ups-quard"]
+  local ch = data and data.mod_changes and data.mod_changes["ups-guard"]
   if ch and ch.old_version and ch.new_version and ch.old_version ~= ch.new_version then
     cycle.schedule_soon()
     say.all({"upq.updated", ch.new_version}, "ok")
@@ -56,7 +58,7 @@ script.on_nth_tick(36000, function() freeze.recheck(false) end)
 commands_module.register()
 
 -- Other mods may line up with the maintenance schedule (read-only)
-remote.add_interface("ups-quard", {
+remote.add_interface("ups-guard", {
   schedule = function()
     return {minutes_left = cycle.minutes_left(), period_minutes = cycle.period(), cycles = storage.cycles or 0}
   end,

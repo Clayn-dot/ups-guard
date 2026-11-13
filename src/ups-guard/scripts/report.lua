@@ -1,4 +1,4 @@
--- Entity report of every surface, written to script-output/ups-quard-report.txt.
+-- Entity report of every surface, written to script-output/ups-guard-report.txt.
 -- Counts chunk by chunk in slices, so a map with millions of entities does not freeze the game.
 local U = require("scripts.util")
 
@@ -62,7 +62,7 @@ end
 function R.step(st)
   local name = st.names[st.si]
   if not name then
-    helpers.write_file("ups-quard-report.txt", table.concat(st.text, "\n\n") .. "\n", false, st.player)
+    helpers.write_file("ups-guard-report.txt", table.concat(st.text, "\n\n") .. "\n", false, st.player)
     return true
   end
   local surface = game.get_surface(name)

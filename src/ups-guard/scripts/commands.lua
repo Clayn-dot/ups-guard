@@ -6,6 +6,8 @@ local U = require("scripts.util")
 local say = require("scripts.say")
 local cycle = require("scripts.cycle")
 local surfaces = require("scripts.surfaces")
+local presets = require("scripts.presets")
+local tune = require("scripts.tune")
 
 local M = {}
 
@@ -49,6 +51,10 @@ end
 
 reg("status", false, function(ctx)
   say.reply(ctx, {"upq.status", storage.items_removed or 0, cfg.get("cycle-hours"), cycle.minutes_left()})
+  local level = cfg.get("level")
+  say.reply(ctx, {"upq.status-level", level, presets.diff(level), #tune.active()})
+  local junk_n, poll_n, ast_n = storage.junk_removed or 0, storage.pollution_cleared or 0, storage.asteroids_removed or 0
+  if junk_n + poll_n + ast_n > 0 then say.reply(ctx, {"upq.status-removed", junk_n, poll_n, ast_n}) end
   status_progress(ctx)
   local x = game.map_settings.enemy_expansion
   say.reply(ctx, {"upq.status-expansion", math.floor(x.min_expansion_cooldown / 3600),
@@ -114,6 +120,7 @@ function M.register()
   require("scripts.cmd_admin")(reg)
   require("scripts.cmd_enemy")(reg)
   require("scripts.cmd_surface")(reg)
+  require("scripts.cmd_tools")(reg)
   commands.add_command("upq", {"upq.help-short"}, handler)
 end
 

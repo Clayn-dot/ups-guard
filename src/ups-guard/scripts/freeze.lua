@@ -144,7 +144,7 @@ end
 function F.thin_once()
   if not cfg.get("thin-once") then return end
   storage.thinned = storage.thinned or {}
-  for _, s in pairs(cfg.auto_surfaces("freeze-surfaces", false)) do
+  for _, s in pairs(cfg.auto_surfaces("thin-surfaces", false)) do
     if not storage.thinned[s.name] then F.start(s, true) end
   end
 end

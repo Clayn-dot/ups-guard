@@ -28,14 +28,12 @@ local function settings_commands(reg)
       say.reply(ctx, {"upq.set-" .. tostring(value), key, s.min or "", s.max or ""})
       return
     end
-    changes.on_setting(name)
     say.reply(ctx, {"upq.set-ok", name, shown(value)})
   end)
 
   reg("reset", true, function(ctx)
     local ok, value, name = cfg.reset(ctx.args[1] or "")
     if not ok then say.reply(ctx, {"upq.set-unknown", ctx.args[1] or ""}); return end
-    changes.on_setting(name)
     say.reply(ctx, {"upq.set-ok", name, shown(value)})
   end)
 
@@ -46,7 +44,8 @@ local function settings_commands(reg)
       for _, p in ipairs(presets.order) do say.reply(ctx, {"upq.preset-" .. p}) end
       return
     end
-    local n = presets.apply(name)
+    local n = 0
+    changes.quiet(function() n = presets.apply(name) end)
     changes.all()
     say.reply(ctx, {"upq.preset-ok", name, n})
   end)

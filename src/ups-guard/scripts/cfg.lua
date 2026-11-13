@@ -58,6 +58,13 @@ local function parse_value(row, raw)
     if v == nil then return nil, "bad" end
     return v
   end
+  if row.kind == "choice" then
+    raw = string.lower(raw)
+    for _, a in ipairs(row.allowed) do
+      if a == raw then return raw end
+    end
+    return nil, "bad"
+  end
   local n = tonumber(raw)
   if not n then return nil, "bad" end
   if row.kind == "int" then n = math.floor(n + 0.5) end
