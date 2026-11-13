@@ -10,7 +10,7 @@ The mod is free. If you like it, you can say thanks with a one-time donation on 
 
 Choose a level (minimal, medium, high or extreme) and you are done. Every part is also a separate setting, and one `/upg` command shows what is going on. Nothing in the mod is tied to a server or a planet name.
 
-![The mod settings](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-01-settings.png)
+![The mod settings](https://raw.githubusercontent.com/Clayn-dot/ups-guard/main/portal/images/IMG-01-settings.png)
 
 *Mod settings: the effect level on top, every part below it as its own setting.*
 
@@ -37,11 +37,11 @@ How much you gain depends on the save: the more enemy bases, idle planets and ol
 
 The end of each pass is one card in chat. `/upg status` has the totals, and `/upg profile on` adds the time per job.
 
-![The pass card](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-02-pass-card.png)
+![The pass card](https://raw.githubusercontent.com/Clayn-dot/ups-guard/main/portal/images/IMG-02-pass-card.png)
 
 *The card after a pass: what was removed on which planet and how many nests and enemies are left.*
 
-![The status](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-03-status.png)
+![The status](https://raw.githubusercontent.com/Clayn-dot/ups-guard/main/portal/images/IMG-03-status.png)
 
 *`/upg status`: totals, the level, and nests and units per planet.*
 

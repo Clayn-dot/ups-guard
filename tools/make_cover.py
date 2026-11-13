@@ -38,11 +38,11 @@ def fit_width(text, width):
 
 
 def title_mask():
+    """Same sizes and positions as the Quality Calculator cover: a big first line (font 49) and a smaller second line (font 32)."""
     mask = Image.new("L", (W, W), 0)
     d = ImageDraw.Draw(mask)
-    # both lines share one size, so the 5 letter word fills the width and the 3 letter word sits in the middle
-    f = fit_width("GUARD", 230)
-    for text, yc in (("UPS", 48), ("GUARD", 104)):
+    for text, size, yc in (("UPS", 49, 42), ("GUARD", 32, 92)):
+        f = ImageFont.truetype(str(FONT), size)
         l, t, r, b = ink_box(text, f)
         d.text(((W - (r - l)) / 2 - (l - 50), yc - ((t + b) / 2 - 50)), text, font=f, fill=255)
     return mask
@@ -82,7 +82,7 @@ def main():
     img.paste((255, 255, 255), (0, 0), mask)
     size = 106
     tile = shield_tile(size)
-    pos = ((W - size) // 2, 160)
+    pos = ((W - size) // 2, 149)
     ring_src = Image.new("L", (W, W), 0)
     ring_src.paste(tile.getchannel("A"), pos)
     ring = ring_src.point(lambda v: 255 if v > 127 else 0).filter(ImageFilter.MaxFilter(OUTLINE)).filter(ImageFilter.GaussianBlur(0.8))
