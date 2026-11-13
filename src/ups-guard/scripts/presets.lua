@@ -16,7 +16,7 @@ local LISTS = {
 
 local CASTRA = {
   ["freeze-enabled"] = true, ["freeze-surfaces"] = "castra", ["thin-once"] = true, ["thin-surfaces"] = "castra",
-  ["sweep-prefixes"] = "data-collector-", ["enemy-keep-surfaces"] = "castra", ["protected-surfaces"] = "castra",
+  ["sweep-prefixes"] = "data-collector-", ["enemy-keep-surfaces"] = "castra", ["protected-surfaces"] = "castra,cerys",
 }
 
 -- Minimal: the Castra fixes, ground items and the enemy count. Everything else is off. Equals the defaults in spec.lua.

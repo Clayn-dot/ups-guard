@@ -10,7 +10,7 @@ M.global = {
   {"announce", "bool", true},
   {"calm-players", "int", 0, 0, 200},
   {"extra-surfaces", "string", ""},
-  {"protected-surfaces", "string", "castra"},
+  {"protected-surfaces", "string", "castra,cerys"},
   {"enemy-keep-surfaces", "string", "castra"},
   -- ground items
   {"items-enabled", "bool", true},
