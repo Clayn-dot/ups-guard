@@ -1,6 +1,6 @@
 # UPS Guard
 
-A Factorio mod that keeps a heavy multiplayer save fast. Pick an effect level in the mod settings (minimal, medium, high or extreme) and a maintenance pass (default every 4 hours) cleans up in small steps: ground items and junk, far empty map, planets nobody uses, far enemy bases, pollution, asteroids, expansion and pathfinding. Every part is also a separate setting, nothing is tied to a server or a planet name.
+A Factorio mod that keeps a heavy multiplayer save fast. Pick an effect level (minimal, medium, high or extreme) and every few hours the mod quietly clears what the game works on for nothing: items on the ground, far empty map, planets nobody uses and enemy bases nobody is near. It works in small steps, so there is no freeze. Every part is also a separate setting, and nothing is tied to a server or a planet name.
 
 Works with Factorio 2.0 and 2.1, with or without Space Age. Languages: English and Russian.
 
@@ -38,7 +38,7 @@ The setting "Effect level" writes a ready set of settings. You can still change 
 | Trains without a path counted | | yes | yes | yes |
 | Pass slows down with many players online | | 12 players | 8 | 6 |
 
-Deleting a planet also resets its enemy evolution (evolution is kept per planet) and the map is generated again if someone returns. The numbers are starting values, not measurements. Values the mod changes in the game (pathfinding, pollution, asteroids, robots, expansion) are saved first and put back when you switch the setting off.
+Deleting a planet also resets its enemy evolution (evolution is kept per planet) and the map is generated again if someone returns. The numbers are starting values, not measurements. A rough guess of the gain on a big save: Minimal 0-2%, Medium 5-15%, High 10-25%, Extreme more than High. Values the mod changes in the game (pathfinding, pollution, asteroids, robots, expansion) are saved first and put back when you switch the setting off.
 
 ## Commands
 
@@ -65,12 +65,6 @@ python tools/build.py 2.0      # dist/for-2.0/ups-guard_1.0.0.zip
 python tools/build.py all      # both
 python tools/install.py        # build and copy into the game mods folder (game closed)
 ```
-
-## Support
-
-[![Support me on Boosty](https://img.shields.io/badge/Support%20me%20on-Boosty-F15F2C?style=for-the-badge)](https://boosty.to/bruklynben)
-
-The mod is free. If you like it, you can say thanks with a one-time donation on Boosty: no subscription is needed.
 
 ## License
 

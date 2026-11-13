@@ -7,5 +7,5 @@
   "dependencies": [
     "base >= 2.1.0"
   ],
-  "description": "Keeps a heavy multiplayer save fast with four effect levels: ground item and junk cleanup, map trimming, planet deletion, far enemy pause, pollution and asteroid limits, expansion and pathfinding tuning. Every part is optional. Admin and player commands: /upg help."
+  "description": "Keep a heavy multiplayer save fast. Pick an effect level and every few hours the mod quietly clears what the game works on for nothing: items on the ground, far empty map, planets nobody uses and enemy bases nobody is near. No freezes, no setup."
 }

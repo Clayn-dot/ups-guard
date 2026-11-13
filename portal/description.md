@@ -1,12 +1,8 @@
-[![Support me on Boosty](https://img.shields.io/badge/Support%20me%20on-Boosty-F15F2C?style=for-the-badge)](https://boosty.to/bruklynben)
-
-The mod is free. If you like it, you can say thanks with a one-time donation on Boosty: no subscription is needed.
-
 **Support in English and Russian / Поддержка на русском и английском.** Questions, bugs and ideas: Discussion tab.
 
 # UPS Guard
 
-**Keep a heavy multiplayer save fast.** Pick an effect level in the mod settings and every few hours a maintenance pass cleans up in small steps, so there is no freeze. Items on the ground, far empty map, planets nobody uses, enemy bases nobody is near: the work the game does for nothing stops.
+**Keep a heavy multiplayer save fast.** Pick an effect level and every few hours the mod quietly clears what the game works on for nothing: items on the ground, far empty map, planets nobody uses and enemy bases nobody is near. It works in small steps, so there is no freeze, and there is nothing to set up.
 
 Choose a level (minimal, medium, high or extreme) and you are done. Every part is also a separate setting, and one `/upg` command shows what is going on. Nothing in the mod is tied to a server or a planet name.
 
@@ -31,7 +27,18 @@ What does not touch play is on early. What makes the game easier starts a little
 
 `/upg preset <name>` shows what a level would change before you apply it. Choosing a level writes its settings once, and values the mod changes in the game are saved and put back when you switch them off.
 
-How much you gain depends on the save: the more enemy bases, idle planets and old map you have, the more each level removes.
+# How much will you notice
+
+These are rough estimates for a big multiplayer save with many enemy bases and idle planets, not measurements. A small save gains little, and the more enemy bases, idle planets and old map you have, the more each level removes.
+
+| Level | Expected UPS gain |
+| --- | --- |
+| Minimal | 0-2% |
+| Medium | 5-15% |
+| High | 10-25% |
+| Extreme | more than High, at the cost of comfort |
+
+Check it on your own save: `/upg status` shows what was removed, `/upg profile on` adds the time per job, and the game's time usage panel (F4 debug menu) shows the real change.
 
 # See what it did
 
