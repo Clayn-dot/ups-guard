@@ -1,7 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.0.1
-Date: 2026-11-13
+Version: 1.1.0
+Date: 2026-11-14
   Changes:
-    - First version for Factorio 2.1: rewrite of UPS Guard as a standalone mod.
-    - Every part is a setting, no server or planet names are built in. Destructive parts are off by default.
-    - New: /upg command with player and admin subcommands, presets, surface deletion, unused planet cleanup.
+    - First release for Factorio 2.1: a rewrite of the old UPS Guard as a standalone mod.
+    - Four effect levels (minimal, medium, high, extreme) set a ready group of settings. Every part is also a separate setting, no server or planet names are built in.
+    - Ground item and junk cleanup, map trimming, deleting planets nobody used, pausing and thinning far enemy bases, pollution and asteroid limits, expansion and pathfinding tuning, enemy count warnings.
+    - One /upg command with player and admin subcommands, presets with a dry run, surface deletion and one chat card at the end of each pass.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2026-11-14
+  Changes:
+    - Build for Factorio 2.0. Same features as 1.1.0.

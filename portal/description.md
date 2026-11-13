@@ -2,37 +2,71 @@
 
 The mod is free. If you like it, you can say thanks with a one-time donation on Boosty: no subscription is needed.
 
-UPS Guard keeps a heavy multiplayer save fast. Pick an effect level in the mod settings (minimal, medium or high) and every few hours a maintenance pass works in small steps, so there is no freeze. Each part is also a separate setting.
+**Support in English and Russian / Поддержка на русском и английском.** Questions, bugs and ideas: Discussion tab.
 
-## Levels
+# UPS Guard
 
-- Minimal (default): ground items and the enemy count. Almost nothing changes in the game.
-- Medium: also pauses far enemy bases on every planet, slows enemy expansion, removes fire and remnants, clears pollution on planets nobody visits, lowers asteroids and enemy pathfinding a little.
-- High: all of that, stronger, plus map trimming, automatic thinning, deleting planets nobody uses, slower pollution spreading and robot building.
+**Keep a heavy multiplayer save fast.** Pick an effect level in the mod settings and every few hours a maintenance pass cleans up in small steps, so there is no freeze. Items on the ground, far empty map, planets nobody uses, enemy bases nobody is near: the work the game does for nothing stops.
 
-Choosing a level writes its settings once. You can change any of them afterwards. Values the mod changes in the game are saved and put back when you switch them off.
+Choose a level (minimal, medium, high or extreme) and you are done. Every part is also a separate setting, and one `/upg` command shows what is going on. Nothing in the mod is tied to a server or a planet name.
 
-## Features
+![The mod settings](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-01-settings.png)
 
-- Ground items and junk: removes items, fire and remnants away from players.
-- Map trimming: deletes generated chunks far from everything you built, from radars, artillery and players.
-- Surfaces: deletes planets nobody uses, or planets you name once. A deleted planet is generated again if someone travels there.
-- Enemy bases: pauses far enemy bases so they cost nothing per tick, wakes them near players, and can thin them.
-- Enemy counts and trains: warns when a planet has too many nests or units, or many trains cannot find a path.
-- Space platforms: keeps asteroids around platforms under a limit.
-- Pollution: clears it on planets nobody visits, and can make it spread less.
-- Game numbers: lowers enemy pathfinding, attack groups, asteroid spawning and robot building work, with the old values restored on switch-off.
-- Expansion and new planets: sets expansion pauses and tunes nests and the safe area on planets generated for the first time.
-- Chat: each pass ends with one clear card. Players can hide the messages with /upg messages off.
-- Admin tools: bulk enemy removal in artillery reach or near your base, an entity report, presets.
+*Mod settings: the effect level on top, every part below it as its own setting.*
+
+- **Four levels**: minimal is safe for any save, extreme means UPS over comfort.
+- **Everything is optional**: change any single value after you pick a level.
+- **One clear card**: each pass ends with one chat message, only the lines that have something to say.
+
+---
+
+# Pick how far to go
+
+What does not touch play is on early. What makes the game easier starts a little on High and opens up on Extreme. What makes it harder for players (asteroid spawning, robot building) is Extreme only. Each level includes the one below.
+
+- **Minimal** (default): ground items, trimming of far empty map (24 chunks margin), deleting planets nobody ever used (12 h after a platform leaves), the enemy count. Almost nothing changes in the game.
+- **Medium**: also pauses far enemy bases on every planet (wide live zone), removes fire and remnants, clears pollution on planets with no nests, slows enemy expansion and tunes new planets a little, lowers enemy pathfinding a little.
+- **High**: all of that, stronger, plus automatic thinning when a planet has too many nests, deleting planets that were used and left empty for 24 h, slower pollution spreading, an asteroid limit around platforms.
+- **Extreme**: strongest values, planets left empty are deleted after 12 h, pollution is cleared even where enemies live, asteroids spawn at 75%, robots build at 75% speed. The game stays playable.
+
+`/upg preset <name>` shows what a level would change before you apply it. Choosing a level writes its settings once, and values the mod changes in the game are saved and put back when you switch them off.
+
+How much you gain depends on the save: the more enemy bases, idle planets and old map you have, the more each level removes.
+
+# See what it did
+
+The end of each pass is one card in chat. `/upg status` has the totals, and `/upg profile on` adds the time per job.
+
+![The pass card](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-02-pass-card.png)
+
+*The card after a pass: what was removed on which planet and how many nests and enemies are left.*
+
+![The status](https://raw.githubusercontent.com/Clayn-dot/ups-quard/main/portal/images/IMG-03-status.png)
+
+*`/upg status`: totals, the level, and nests and units per planet.*
+
+Players can hide the messages with `/upg messages off`.
+
+# What it does
+
+- **Ground items and junk**: removes items, fire and remnants away from players.
+- **Map trimming**: deletes generated chunks far from everything you built, from radars, artillery and players.
+- **Planets**: deletes planets nobody ever used, planets left empty for a set time, or planets you name once. A deleted planet is generated again if someone travels there, and its enemy evolution starts over. Players get a chat warning before a planet that was used is deleted.
+- **Enemy bases**: pauses far enemy bases so they cost nothing per tick, wakes them near players, and can thin them.
+- **Counts and trains**: warns when a planet has too many nests or units, or many trains cannot find a path.
+- **Space platforms**: keeps asteroids around platforms under a limit. Platforms themselves are never touched.
+- **Pollution**: clears it on planets with no nests, and can make it spread less.
+- **Game numbers**: lowers enemy pathfinding, attack groups, asteroid spawning and robot building work.
+- **Expansion and new planets**: sets expansion pauses and tunes nests and the safe area on planets generated for the first time.
+- **Admin tools**: bulk enemy removal in artillery reach or near your base, an entity report, presets.
 
 ## Commands
 
-One command, `/upg`. `/upg help` lists the subcommands. Players can see the status, surfaces, stuck trains and settings. Admins can change any setting with `/upg set`, run the pass by hand and use the cleanup tools. Anything that removes things only counts until you add `confirm`.
+One command, `/upg`, and `/upg help` lists the subcommands. Players can see the status, surfaces, stuck trains and settings. Admins can change any setting with `/upg set`, run the pass by hand and use the cleanup tools. Anything that removes things only counts until you add `confirm`.
 
 ## Compatibility
 
-Factorio 2.1. Works without Space Age; with it, planets and platforms are handled too. Platforms themselves are never touched. Do not run it together with the old UPS Guard for 2.0.
+Factorio 2.1 and 2.0 (separate downloads). Works without Space Age; with it, planets and platforms are handled too. Works with modded planets and enemies. If Factory Radar is installed, its shift summary ends together with the maintenance pass. English and Russian.
 
 ## Support
 

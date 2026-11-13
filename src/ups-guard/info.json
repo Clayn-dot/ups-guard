@@ -1,11 +1,11 @@
 {
   "name": "ups-guard",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "title": "UPS Guard",
   "author": "bruklyn.ben",
   "factorio_version": "2.1",
   "dependencies": [
     "base >= 2.1.0"
   ],
-  "description": "Keeps a heavy multiplayer save fast with three effect levels: ground item and junk cleanup, map trimming, unused planet deletion, far enemy pause, pollution and asteroid limits, expansion and pathfinding tuning. Every part is optional. Admin and player commands: /upg help."
+  "description": "Keeps a heavy multiplayer save fast with four effect levels: ground item and junk cleanup, map trimming, planet deletion, far enemy pause, pollution and asteroid limits, expansion and pathfinding tuning. Every part is optional. Admin and player commands: /upg help."
 }
