@@ -1,0 +1,3 @@
+-- ups-quard
+-- Prototypes (items, sprites, shortcuts, ...) go here. Keep sprite names unique and rename a sprite when its picture changes,
+-- otherwise the game may keep showing the old one.

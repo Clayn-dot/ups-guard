@@ -1,0 +1,6 @@
+{
+  "runtime.version": "Lua 5.2",
+  "workspace.checkThirdParty": false,
+  "workspace.library": ["C:/Tools/factorio-api/2.1.23/factorio"],
+  "workspace.ignoreDir": ["dist", "docs", "release"]
+}

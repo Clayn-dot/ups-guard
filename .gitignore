@@ -1,0 +1,7 @@
+dist/
+release/
+__pycache__/
+*.pyc
+*.zip
+.vscode/
+.obsidian/
