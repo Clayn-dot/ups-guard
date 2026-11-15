@@ -37,6 +37,14 @@ function Ch.all()
   freeze.thin_once()
 end
 
+-- First load (mod added to a world, or updated from a version that did not track the level): remember what level
+-- is really in force. "write" is true only when the mod is added to a world.
+function Ch.first_load(write)
+  if storage.level_applied ~= nil then return end
+  Ch.quiet(function() presets.settle(cfg.get("level"), write) end)
+  storage.level_applied = cfg.get("level")
+end
+
 function Ch.on_setting(name)
   if busy then return end
   if name == "upg-level" then
@@ -46,8 +54,16 @@ function Ch.on_setting(name)
       Ch.quiet(function() n = presets.apply(level) end)
       Ch.all()
       say.all({"upg.level-applied", level, n}, "ok")
+    else
+      storage.level_applied = "custom"
     end
     return
+  end
+  -- a level setting changed by hand: the level is custom from now on
+  if cfg.get("level") ~= "custom" and presets.controls(string.sub(name, 5)) then
+    Ch.quiet(function() cfg.put("level", "custom") end)
+    storage.level_applied = "custom"
+    say.all({"upg.level-custom"}, "info")
   end
   if starts(name, "upg-expansion-") then expansion.apply() end
   if name == "upg-delete-once" then surfaces.delete_once() end

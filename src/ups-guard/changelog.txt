@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 2026-11-15
+  Changes:
+    - A level picked in the main menu is now applied when the world loads (only to settings you did not touch).
+    - Changing a single setting that a level controls switches the level to Custom, so the shown level always matches the real values.
+    - The level in force is shown to players when they join, on the pass card and in /upg status.
+---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2026-11-14
   Changes:
@@ -6,6 +13,13 @@ Date: 2026-11-14
     - Four effect levels (minimal, medium, high, extreme) set a ready group of settings. Every part is also a separate setting, no server or planet names are built in.
     - Ground item and junk cleanup, map trimming, deleting planets nobody used, pausing and thinning far enemy bases, pollution and asteroid limits, expansion and pathfinding tuning, enemy count warnings.
     - One /upg command with player and admin subcommands, presets with a dry run, surface deletion and one chat card at the end of each pass.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2026-11-15
+  Changes:
+    - A level picked in the main menu is now applied when the world loads (only to settings you did not touch).
+    - Changing a single setting that a level controls switches the level to Custom, so the shown level always matches the real values.
+    - The level in force is shown to players when they join, on the pass card and in /upg status.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2026-11-14

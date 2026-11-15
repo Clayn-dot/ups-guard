@@ -24,12 +24,14 @@ script.on_init(function()
   cycle.init()
   -- first pass 5 game minutes after the mod is added, then every N hours
   storage.minutes = cycle.period() - 5
+  changes.first_load(true)
   say.all({"upg.installed", cfg.get("cycle-hours")}, "ok")
   startup_jobs()
 end)
 
 script.on_configuration_changed(function(data)
   cycle.init()
+  changes.first_load(false)
   local ch = data and data.mod_changes and data.mod_changes["ups-guard"]
   if ch and ch.old_version and ch.new_version and ch.old_version ~= ch.new_version then
     cycle.schedule_soon()
@@ -43,6 +45,12 @@ script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
 end)
 
 script.on_event(defines.events.on_surface_created, planets.on_surface_created)
+
+-- Everybody sees the level that is really in force
+script.on_event(defines.events.on_player_joined_game, function(event)
+  local player = game.get_player(event.player_index)
+  if player then say.to_player(player, {"upg.level-now", cfg.get("level")}) end
+end)
 
 -- Timers. Each one is cheap or works in slices.
 script.on_nth_tick(15, freeze.tick)

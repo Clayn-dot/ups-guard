@@ -28,6 +28,12 @@ function S.all(msg, kind)
   send(tagged(msg, kind), kind)
 end
 
+-- One message to one player (respects the same switches as a broadcast)
+function S.to_player(player, msg, kind)
+  if not cfg.get("announce") or not player.mod_settings["upg-player-messages"].value then return end
+  player.print(tagged(msg, kind), {color = COLORS[kind or "info"]})
+end
+
 -- A title and lines, joined with line breaks. A LocalisedString holds at most 20 parts, so long cards are nested.
 function S.card(title, lines, kind)
   local body = {"", title}

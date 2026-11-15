@@ -115,11 +115,42 @@ function P.apply(name)
   local n = 0
   if name == "default" then
     for _, row in ipairs(spec.global) do cfg.put(row[1], row[3]); n = n + 1 end
+    storage.level_applied = "minimal"
     return n
   end
   for key, value in pairs(SETS[name]) do cfg.put(key, wanted(key, value)); n = n + 1 end
   cfg.put("level", name)
+  storage.level_applied = name
   return n
+end
+
+-- Settings that some level writes. Changing one of them by hand makes the level "custom".
+local CONTROLLED
+function P.controls(key)
+  if not CONTROLLED then
+    CONTROLLED = {}
+    for _, set in pairs(SETS) do
+      for k in pairs(set) do CONTROLLED[k] = true end
+    end
+  end
+  return CONTROLLED[key] == true
+end
+
+-- First load of the mod: a level picked in the main menu writes only the settings the player did not touch.
+-- Then the level name must tell the truth: any difference from the level makes it "custom".
+function P.settle(level, write)
+  if level == "custom" or not SETS[level] then return level end
+  if write then
+    for key, value in pairs(SETS[level]) do
+      local row = spec.find(key)
+      if row and cfg.get(key) == row.default then cfg.put(key, wanted(key, value)) end
+    end
+  end
+  if P.diff(level) > 0 then
+    cfg.put("level", "custom")
+    return "custom"
+  end
+  return level
 end
 
 -- Settings of a level that have a different value now, as a sorted list of {key, now, new}.

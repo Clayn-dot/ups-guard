@@ -27,7 +27,9 @@ What does not touch play is on early. What makes the game easier starts a little
 
 ## Change it while you play
 
-Everything works in a running game, no restart is needed. Pick a level in the mod settings (Map tab) and its settings are written at once, with a message in chat. After that you can change any single setting and it takes effect right away. The level name stays as it was, and `/upg status` tells how many settings differ from it.
+Everything works in a running game, no restart is needed. Pick a level in the mod settings (Map tab) and its settings are written at once, with a message in chat. A level picked in the main menu is applied when you load the world: only the settings you did not touch are written. Everybody sees the level in force when they join, on the card after each pass and in `/upg status`.
+
+If you change any single setting that a level controls, the level switches to Custom by itself, so the name always tells the truth. Pick a level in the list again and it is applied.
 
 To go back to a level, for example if your changes turned out too strong, type `/upg preset medium confirm` (use the level you want). Without `confirm` the command only shows what would change. Values the mod changes in the game (pathfinding, pollution, asteroids, robots, expansion) are saved first and put back when you switch the setting off.
 

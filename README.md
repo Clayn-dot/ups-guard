@@ -15,7 +15,7 @@ Both come from the same source. A release of a mod has one game version, so the 
 
 ## Levels
 
-The setting "Effect level" writes a ready set of settings. You can still change any of them afterwards; "Custom" writes nothing. `/upg preset <name>` shows what a level would change, add `confirm` to apply it. Each level includes the one below it.
+The setting "Effect level" writes a ready set of settings. A level picked in the main menu is applied when the world loads, to the settings you did not touch. Change any single setting afterwards and the level switches to "Custom" by itself; pick a level again to apply it. "Custom" writes nothing. `/upg preset <name>` shows what a level would change, add `confirm` to apply it. Each level includes the one below it.
 
 | | Minimal (default) | Medium | High | Extreme |
 | --- | --- | --- | --- | --- |
@@ -62,8 +62,8 @@ fonts/            Bruk Sans, used for the cover
 ## Build
 
 ```
-python tools/build.py          # dist/for-2.1/ups-guard_1.1.0.zip
-python tools/build.py 2.0      # dist/for-2.0/ups-guard_1.0.0.zip
+python tools/build.py          # dist/for-2.1/ups-guard_1.1.1.zip
+python tools/build.py 2.0      # dist/for-2.0/ups-guard_1.0.1.zip
 python tools/build.py all      # both
 python tools/install.py        # build and copy into the game mods folder (game closed)
 ```

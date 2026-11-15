@@ -1,12 +1,12 @@
 """Builds the mod zip: dist/for-<game version>/<name>_<version>.zip (inside a <name>_<version>/ folder).
 Run: python tools/build.py [2.1|2.0|all]  (default 2.1, as in src/.../info.json)
-Mod version per game: 2.0 -> 1.0.0, 2.1 -> 1.1.0 (MOD_VERSIONS)
+Mod version per game: 2.0 -> 1.0.1, 2.1 -> 1.1.1 (MOD_VERSIONS)
 The 2.0 build uses the same sources and changes only factorio_version and dependencies in info.json."""
 import json, pathlib, re, sys, zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BASE_VERSIONS = {"2.0": "2.0.0", "2.1": "2.1.0"}
-MOD_VERSIONS = {"2.0": "1.0.0", "2.1": "1.1.0"}
+MOD_VERSIONS = {"2.0": "1.0.1", "2.1": "1.1.1"}
 
 
 def vkey(v):
